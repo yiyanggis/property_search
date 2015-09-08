@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)http://leafletjs.com/examples/layers-control-example.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Leaflet Layers Control Example</title>
+	<meta charset="utf-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="http://leafletjs.com/dist/leaflet.css">
+	<link rel="stylesheet" href="css/leaflet.draw.css">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/bootstrap-select.css">
+	<!--<link rel="stylesheet" href="css/leaflet.control.orderlayers.css">-->
+	<style>
+
+		div .row{
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="row" style="margin:20px;">
+		<form class="form-inline">
+		    <div class="form-group">
+		      <label class="col-md-1 control-label" for="lunch">Website:</label>
+		    </div>
+		    <div class="form-group">
+		      <select id="websiteSelect" class="selectpicker" data-live-search="true" title="Website">
+		        <option>VRBO</option>
+		        <option>AIRBNB</option>m.
+		        <option>FLIPKEY</option>
+		      </select>
+		    </div>
+
+		    <div class="form-group">
+		      <label class="col-md-1 control-label" for="lunch">City:</label>
+		    </div>
+		    <div class="form-group">
+		      <select id="citySelect" class="selectpicker" data-live-search="true" title="City">
+		        <option>Carlsbad</option>
+		        <option>Pacific Grove</option>
+		      </select>
+		    </div>
+		</form>
+
+		<div class="col-md-8">
+			<div id="map" style="width: 100%; height: 800px; "></div>
+		</div>
+		
+	</div>
+
+	<script src="js/leaflet.js"></script>
+	<script src="http://maps.google.com/maps/api/js?v=3&sensor=false"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/bootstrap-select.js"></script>
+	<script src="js/leaflet.draw-src.js"></script>
+	<script src="js/property.js"></script>
+	<!--<script src="js/leaflet.control.orderlayers.js"></script>-->
+	<script src="js/leaflet-providers.js"></script>
+	<script src="js/Google.js"></script>
+	<script>
+
+		var result_markers=[];
+		var map;
+
+		var websites={"VRBO":"property","AIRBNB":"property_airbnb","FLIPKEY":"property_flipkey"};
+
+		var website,city;
+		
+		$(document).ready(function(){
+			map=initmap('map');
+
+			$("#websiteSelect").change(function(){
+				website=websites[$("#websiteSelect").val()];
+				city=$("#citySelect").val();
+
+				queryProperty();
+			});
+
+			$("#citySelect").change(function(){
+				website=websites[$("#websiteSelect").val()];
+				city=$("#citySelect").val();
+
+				queryProperty();
+			});
+
+		});	
+
+	</script>
+
+
+</body></html>
