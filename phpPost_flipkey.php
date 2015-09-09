@@ -11,7 +11,7 @@
 
 require('config.php');
 
-$connection_string="host=".DB_HOST." port=".DB_PORT." dbname=".DB_NAME_Airbnb." user=".DB_USER." password=".DB_PASSWORD;
+$connection_string="host=".DB_HOST." port=".DB_PORT." dbname=".DB_NAME_Flipkey." user=".DB_USER." password=".DB_PASSWORD;
 $db_conn=pg_connect($connection_string) or die ("Could not connect to server\n");
 
 $arguments;
